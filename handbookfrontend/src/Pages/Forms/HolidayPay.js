@@ -4,8 +4,14 @@ import Loader from 'react-loader-spinner'
 import { createHolidayPay } from '../../API/Form/holidaypay.api'
 import axios from 'axios'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import { useSelector } from 'react-redux'
 
 const HolidayPay = props => {
+  const AllStatePDFData = useSelector(
+    state =>
+      state.rootReducer.stateWithLeavesReducer.stateAndLeaves[3].singleState
+  )
+
   const [formPass, setFormPass] = useState(false)
   const [loginData, setLoginData] = useState()
 
@@ -49,6 +55,7 @@ const HolidayPay = props => {
       })
     }
   }
+
   const handleSubmit = async e => {
     e.preventDefault()
     if (!isHolidayPay) {
@@ -86,6 +93,38 @@ const HolidayPay = props => {
     const loginToken = JSON.parse(window.localStorage.getItem('handbook'))
     setLoginData(loginToken)
   }, [])
+
+  const Test = () => {
+    return (
+      <>
+        <div className='my-5'>
+          <h2>
+            State Name :{' '}
+            <span className='text-danger'>
+              {AllStatePDFData[1].stateId.name}
+            </span>
+          </h2>
+          {AllStatePDFData.map((item, i) => {
+            return (
+              <div key={i} className='my-3 border px-2'>
+                <p>
+                  Id : <span className='text-danger'>{item._id}</span>
+                </p>
+                <p>
+                  Leave Title :{' '}
+                  <span className='text-danger'>{item.title}</span>
+                </p>
+                <p>
+                  Description :{' '}
+                  <span className='text-danger'>{item.description}</span>
+                </p>
+              </div>
+            )
+          })}
+        </div>
+      </>
+    )
+  }
 
   return (
     <div>
@@ -256,6 +295,7 @@ const HolidayPay = props => {
           ''
         )}
       </>
+      <Test />
     </div>
   )
 }

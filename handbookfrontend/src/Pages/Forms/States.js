@@ -11,8 +11,9 @@ import Box from '@material-ui/core/Box'
 import Modal from '@material-ui/core/Modal'
 import { createState } from '../../API/Form/states.api'
 import axios from 'axios'
-import { useSelector } from 'react-redux'
+import { useSelector, connect } from 'react-redux'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import { addAllStateAndLeaves } from './../../Redux/Action/action'
 
 // import Loader from 'react-loader-spinner'
 // import Button from '@material-ui/core/Button'
@@ -48,7 +49,7 @@ const States = props => {
 
   const [StateForLeaveSchema, setStateForLeaveSchema] = useState([])
   const [singleStatePDF, setSingleStatePDF] = useState([])
-  const [allStateDataPDF, setAllStateDataPDF] = useState(singleStatePDF)
+  const [allStateDataPDF, setAllStateDataPDF] = useState([])
 
   // Leave State Data
   const GetStateLeaveData = () => {
@@ -77,6 +78,8 @@ const States = props => {
     setLoginData(loginToken)
 
     GetStateLeaveData()
+    const AllStateData = { singleState: singleStatePDF }
+    setAllStateDataPDF([...allStateDataPDF, AllStateData])
   }, [singleStatePDF]) // eslint-disable-line
 
   const handleChange = name => e => {
@@ -97,15 +100,11 @@ const States = props => {
     })
       .then(res => {
         setSingleStatePDF(res.data.data)
-        const updatedForm = {
-          singleState: singleStatePDF
-        }
-        setAllStateDataPDF([...allStateDataPDF, updatedForm])
       })
       .catch(err => console.log('Error :', err))
   }
 
-  // console.log('Single :', singleStatePDF)
+  console.log('Single :', singleStatePDF)
   console.log('Multiple :', allStateDataPDF)
 
   const handleDelete = name => e => {
@@ -137,6 +136,7 @@ const States = props => {
         .then(res => {
           // console.log("Result :", res)
           sendToProgressBar()
+          props.setStateAndLeavesInRedux(allStateDataPDF)
         })
         .catch(err => console.log('Error :', err))
     }
@@ -385,4 +385,14 @@ const States = props => {
     </div>
   )
 }
-export default States
+
+const mapStateToProps = state => ({
+  stateAndLeavesFromRedux: state.rootReducer
+})
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setStateAndLeavesInRedux: data => dispatch(addAllStateAndLeaves(data))
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(States)
