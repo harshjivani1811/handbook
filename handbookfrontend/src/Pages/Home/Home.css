@@ -1,0 +1,145 @@
+.page-home {
+  background-image: url(../../assets/img/home-bg.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  object-fit: cover;
+  min-width: calc(100vw - 17px);
+  min-height: 100vh;
+  position: relative;
+}
+/* .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+} */
+.page-home .main-title {
+  padding-top: 150px;
+  text-align: center;
+  color: #fff;
+  font-size: 34px;
+  margin-bottom: 150px;
+  font-family: lato;
+}
+
+.subscription {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 80%;
+  margin: 0 auto;
+}
+.subscription-left {
+  /* width: 60%; */
+  color: #fff;
+  text-align: center;
+}
+.subscription-left p {
+  color: #878787;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.subscription-left p b {
+  color: #fff;
+  margin-right: 10px;
+}
+.subscription-left h2 {
+  font-size: 54px;
+  font-weight: 300;
+  /* margin-bottom: 10px; */
+}
+.subscription-left > span {
+  color: #878787;
+  font-size: 24px;
+  display: block;
+  line-height: normal;
+}
+.subscription-left > div {
+  margin-bottom: 20px;
+}
+
+.subscription-right {
+  width: 30%;
+  background-color: #ffff;
+  padding: 20px;
+  border-radius: 10px;
+}
+.subscription-right h2 {
+  font-size: 26px;
+  font-style: italic;
+  margin-bottom: 50px;
+}
+.subscription-right h2 span {
+  font-size: 14px;
+  display: block;
+  font-weight: 700;
+  font-style: normal;
+}
+.subscription-right .btn {
+  display: block;
+}
+
+/* Calendly */
+.calendly-badge-widget .calendly-badge-content {
+  background-color: black !important;
+}
+
+/* state's meta data */
+.internal-details-stateleave {
+  padding: 16px;
+  background-color: white !important;
+  color: black !important;
+  margin: 5px !important;
+}
+
+.modal-state {
+  overflow: none;
+  overflow-x: hidden;
+  height: 535px;
+  margin-top: 150px;
+}
+
+.back-btn {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .subscription {
+    max-width: 100% !important;
+    flex-direction: column;
+  }
+  .subscription-left {
+    margin-bottom: 50px;
+    width: 90% !important;
+  }
+  .page-home .main-title {
+    margin-bottom: 60px;
+  }
+  .subscription-right {
+    width: 40%;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-home .main-title {
+    padding-top: 100px;
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  .subscription-left p {
+    font-size: 16px;
+  }
+  .subscription-left h2 {
+    font-size: 34px;
+  }
+  .subscription-left > span {
+    font-size: 14px;
+  }
+  .subscription-right {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

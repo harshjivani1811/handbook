@@ -1,0 +1,1 @@
+export const createHolidayPay = `${process.env.REACT_APP_API_URL}/api/holidaypay/createholidaypay`

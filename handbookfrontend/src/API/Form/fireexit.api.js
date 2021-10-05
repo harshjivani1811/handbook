@@ -1,0 +1,1 @@
+export const createfireexit = `${process.env.REACT_APP_API_URL}/api/fireexit/createfireexit`

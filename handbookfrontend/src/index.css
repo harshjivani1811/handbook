@@ -1,0 +1,525 @@
+/* Css Reset */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.5em;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+  position: relative;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}
+/* input {
+  -webkit-appearance: none;
+} */
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a,
+a:hover,
+a:focus {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: normal;
+  margin: 0;
+}
+h1 {
+  font-size: 36px;
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 18px;
+}
+h4 {
+  font-size: 16px;
+}
+p {
+  margin: 0;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+.btn {
+  font-size: 16px;
+  font-weight: 500;
+}
+.form-group label {
+  display: block;
+  font-size: 14px;
+  /* text-transform: capitalize; */
+  color: #0b1628;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+input[type="text"],
+input#state {
+  border: 1px solid#e8e8e8;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+}
+button {
+  font-size: 14px;
+  /* text-transform: capitalize; */
+  height: 45px;
+  width: 100px;
+  border-radius: 8px;
+  border: 1px solid#4558be;
+  background-color: #4558be;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+}
+/* Css Reguler */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+header > nav {
+  padding: 15px !important;
+}
+
+.btn,
+.btn:hover,
+.btn:focus,
+.btn:active {
+  background-color: #1f2126;
+  color: #fff;
+  line-height: normal;
+  padding: 10px 30px;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none;
+  /* text-transform: capitalize; */
+}
+.containter {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.progress {
+  height: 25px;
+  font-size: 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.progress-bar {
+  background-color: #0fab23;
+}
+.alert-danger {
+  width: 100%;
+  display: block;
+}
+.form-common > h1 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.form-common > .btn {
+  margin-top: 30px;
+}
+.formgroup > label {
+  font-size: 15px;
+  display: block;
+  margin-bottom: 5px;
+  /* text-transform: capitalize; */
+}
+.formgroup > input,
+.formgroup > textarea {
+  margin-bottom: 15px;
+}
+
+.input-div {
+  margin: 1.5rem 0;
+}
+
+.error-msg {
+  color: red;
+  margin: -10px 0 10px 0;
+}
+
+.cust-Upload-doc > input {
+  max-width: 270px;
+  display: inline-block;
+  margin-right: 10px;
+}
+.cust-Upload-doc > button.btn {
+  height: 39px;
+}
+
+.company-structure > p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.company-structure-inner {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 2px solid#f7f7f7;
+  padding-bottom: 20px;
+}
+.company-structure-inner .formgroup {
+  width: 33.33%;
+  display: flex;
+  align-items: center;
+}
+
+.company-structure-inner .formgroup > .form-check-input,
+.payroll .formgroup > input {
+  margin-right: 10px;
+  margin-bottom: 0;
+  margin-top: 0;
+  cursor: pointer;
+}
+.company-structure-inner .formgroup label,
+.payroll .formgroup label {
+  margin-bottom: 0;
+  line-height: normal;
+}
+.payroll .formgroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.payroll select {
+  width: 150px;
+  margin-right: 20px;
+  cursor: pointer;
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
+  appearance: auto;
+}
+/* .payroll .formgroup:nth-child(odd) {
+  margin-bottom: 20px;
+  border-bottom: 2px solid#f7f7f7;
+  padding-bottom: 20px;
+  margin-left: 1.5rem;
+} */
+.common-radio-sec .formgroup {
+  flex-wrap: wrap;
+}
+.common-radio-sec .formgroup label {
+  margin-right: 30px;
+}
+.common-radio-sec h3 {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.common-radio-sec .formgroup {
+  border: none !important;
+  margin-left: 1.5rem;
+}
+.holiday-list {
+  padding-left: 20px;
+}
+.holiday-list > li {
+  font-size: 14px;
+  font-weight: bold;
+  color: #0fab23;
+  list-style: decimal;
+  margin-bottom: 10px;
+}
+select {
+  appearance: auto !important;
+}
+.selected-state {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px 10px !important;
+}
+.selected-state-control span {
+  margin-left: 10px;
+  cursor: pointer;
+}
+#modal-modal-title {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.MuiBox-root .MuiPaper-root {
+  background-color: #1f2126 !important;
+  color: #fff !important;
+  font-size: 14px;
+  line-height: normal;
+  padding: 0px;
+  font-weight: 700;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: 10px !important;
+}
+.MuiBox-root p.MuiTypography-body1 {
+  font-size: 14px;
+}
+.HolidayPay .formgroup:nth-child(odd) {
+  /* margin-bottom: 10px; */
+  padding-bottom: 0;
+}
+.mobile-menu {
+  display: none;
+}
+
+.navbar {
+  justify-content: space-between !important;
+}
+#navbarNav {
+  justify-content: flex-end;
+}
+
+@media (max-width: 1024px) {
+  .btn,
+  .btn:hover,
+  .btn:focus,
+  .btn:active {
+    padding: 10px;
+  }
+  .mobile-menu {
+    display: block;
+    width: 27px;
+    height: 2px;
+    background-color: #fff;
+    position: relative;
+  }
+  .mobile-menu:after,
+  .mobile-menu:before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    height: 2px;
+  }
+  .mobile-menu:before {
+    bottom: -7px;
+    top: auto;
+  }
+  .navbar-expand-lg {
+    justify-content: space-between;
+  }
+  #navbarNav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #434446;
+    width: 100%;
+    max-width: 300px;
+    transition: all 0.2s linear;
+    margin-left: -300px;
+    display: block !important;
+  }
+  .collapse.navbar-collapse.ismobile-menu {
+    margin-left: 0 !important;
+  }
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: column;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .page-height {
+    height: 1124px;
+    width: 793px;
+    border: 1px solid gray;
+  }
+}
+
+@media (max-width: 767px) {
+  .MuiBox-root-2 {
+    width: 100%;
+    max-width: 95%;
+  }
+  .company-structure-inner {
+    flex-direction: column;
+  }
+  .company-structure-inner .formgroup {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .company-structure > p {
+    font-size: 16px;
+  }
+  .formgroup > label {
+    font-size: 14px;
+  }
+  .payroll-only .formgroup:nth-child(odd) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .payroll-only select {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .page-height {
+    height: 1124px;
+    width: 767px;
+    border: 1px solid gray;
+  }
+}
+/* PDF Component CSS */
+.pdf-container {
+  /* margin-top: 2rem;
+  margin-left: 30px; */
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 12px;
+  width: 100%;
+  max-width: 811px;
+  overflow-x: auto;
+  padding: 20px;
+}
+
+.li-pdf {
+  list-style-type: disc;
+  margin-left: 45px;
+  text-align: justify;
+}
+
+.justify-content {
+  text-align: justify;
+}
+
+.center-content {
+  text-align: center;
+  font-weight: bold;
+}
+
+.sign-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 5rem 0;
+}
+
+.sign-tag {
+  margin: 0 0 5rem 0;
+}
+
+.sign-p {
+  border-bottom: 1px solid black;
+  width: 250px;
+}
+
+.page-footer {
+  margin: -15px 0;
+}
+
+.page-height {
+  height: 1124px;
+  width: 793px;
+  border: 1px solid gray;
+  margin: -5px;
+}
+
+.btn {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.section-page-margin {
+  margin: 1rem 4rem;
+}
+
+.pdf-generate-btn {
+  margin: 5rem 0;
+}
+
+/* login Component's CSS  */
+.login-container {
+  background-image: url(../src/assets/img/home-bg.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  object-fit: cover;
+  min-width: calc(100vw - 17px);
+  min-height: 100vh;
+  padding-top: 10rem;
+  display: flex;
+  justify-content: center;
+}
+
+.login-div-content {
+  background-color: white;
+  height: fit-content;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 0 2rem;
+}
+.login-h1 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.login-input-div {
+  margin: 1rem 0;
+}
+
+.login-btn-div {
+  text-align: center;
+}
+
+.login-btn {
+  margin: 2rem 0 0 0;
+}
+
+/* Footer */
+.footer-p-tag {
+  font-size: 10px;
+  text-align: justify;
+  line-height: 100%;
+}
+
+/* State Component */
+.MuiBox-root {
+  width: 550px !important;
+}
+
+.capital-letter {
+  text-transform: capitalize;
+}

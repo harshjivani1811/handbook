@@ -1,0 +1,1 @@
+export const createcompanyvehicles = `${process.env.REACT_APP_API_URL}/api/companyvehicles/createcompanyvehicles`

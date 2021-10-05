@@ -1,0 +1,74 @@
+.page-tabber {
+    padding-top: 100px;
+    min-width: calc(100vw - 17px);
+    min-height: 100vh;
+    background-color: #f7f7f7;
+    padding-bottom: 20px;
+}
+
+.form-tabber {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+ 
+.form-tabber-left {
+    width: 25%;
+    background-color: #fff;
+    padding: 15px 25px;
+    border-radius: 10px;
+}
+
+.form-tabber-right {
+    width: 70%;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.form-tabber-left-top-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.form-tabber-left-top-btn > .btn {
+    width: 47%;
+}
+.form-tabber-left-bottom > .btn {
+    display: block;
+    width: 100%;
+    border-radius: 0;
+    margin: 0 auto 10px;
+}
+.form-tabber-left-bottom > .btn:focus {
+    background-color: #464950 !important;
+}
+
+@media (max-width: 1024px) {
+    .form-tabber-left {
+        width: 38%;
+        padding: 10px;
+    }
+    .form-tabber-right {
+        width: 60%;
+    }
+}
+@media (max-width: 992px) {
+    .form-common > h1 {
+        font-size: 20px;
+    }
+}
+@media (max-width: 767px) {
+    .form-tabber {
+        flex-direction: column-reverse;
+
+    }
+    .form-tabber-left {
+        width: 100%;
+    }
+    .form-tabber-right {
+        width: 100%;
+    }
+}
