@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react'
 import html2canvas from 'html2canvas'
-import JsPDF from 'jspdf'
+
 import $ from 'jquery'
 import { getPdfData } from './../../API/Form/pdfData.api'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
 import { useHistory } from 'react-router'
+import jsPDF from "jspdf";
 
 // index of PDF
 const IndexTable = props => {
@@ -68,311 +69,53 @@ const Pdf = () => {
 
   const [pdfBtnText, setPdfBtnText] = useState('Generate PDF')
   const generatePDF = () => {
-    setPdfBtnText('Generating ...')
-    html2canvas($('.pdf-pages:eq(0)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 0)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf = new JsPDF()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
+    setPdfBtnText("Generating ...");
+    // var quotes = document.getElementById("pdfData");
 
-    html2canvas($('.pdf-pages:eq(1)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 1)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
+    var HTML_Width = $(".pdf-container").width();
+    var HTML_Height = $(".pdf-container").height();
+    var top_left_margin = 15;
+    var PDF_Width = HTML_Width + top_left_margin * 2;
+    var PDF_Height = PDF_Width * 1.5 + top_left_margin * 2;
+    var canvas_image_width = HTML_Width;
+    var canvas_image_height = HTML_Height;
+    debugger;
+    var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
 
-    html2canvas($('.pdf-pages:eq(2)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 2)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
+    html2canvas($(".pdf-container")[0], { allowTaint: true }).then(function (
+      canvas
+    ) {
+      canvas.getContext("2d");
 
-    html2canvas($('.pdf-pages:eq(3)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 3)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
+      console.log(canvas.height + "  " + canvas.width);
+      debugger;
+      var imgData = canvas.toDataURL("image/jpeg", 1.0);
+      var pdf = new jsPDF("p", "pt", [PDF_Width, PDF_Height]);
+      pdf.addImage(
+        imgData,
+        "JPG",
+        top_left_margin,
+        top_left_margin,
+        canvas_image_width,
+        canvas_image_height
+      );
 
-    html2canvas($('.pdf-pages:eq(4)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 4)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
+      for (var i = 1; i <= totalPDFPages; i++) {
+        debugger;
+        pdf.addPage();
+        pdf.addImage(
+          imgData,
+          "JPG",
+          top_left_margin,
+          -(PDF_Height * i) + top_left_margin * 4,
+          canvas_image_width,
+          canvas_image_height
+        );
+      }
 
-    html2canvas($('.pdf-pages:eq(5)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 5)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(6)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 6)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(7)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 7)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(8)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 8)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(9)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 9)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(10)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 10)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(11)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 11)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(12)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 12)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(13)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 13)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(14)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 14)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(15)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 15)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(16)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 16)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(17)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 17)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(18)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 18)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(19)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 19)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(20)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 20)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(21)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 21)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(22)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 22)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(23)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 23)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-    })
-
-    html2canvas($('.pdf-pages:eq(24)')[0], {
-      allowTaint: true,
-      scale: 1,
-      width: 2000,
-      height: 9000
-    }).then(canvas => {
-      calculatePDFHeightWidth('.pdf-pages', 24)
-      const imageData = canvas.toDataURL('image/jpeg')
-      pdf.addPage()
-      pdf.addImage(imageData, 'jpeg', 0, 0)
-      pdf.save('Handbook.pdf')
-    })
-    setTimeout(() => {
-      history.push('/')
-    }, 12000)
-  }
+      pdf.save("HTML-Document.pdf");
+    });
+  };
 
   useEffect(() => {
     const loginToken = JSON.parse(window.localStorage.getItem('handbook'))
@@ -419,7 +162,7 @@ const Pdf = () => {
             <div
               id='pdf-front-page'
               className='pdf-pages pdf-header page-height'
-              style={{ height: '1124px' }}
+              // style={{ height: '1124px' }}
             >
               <div style={{ paddingTop: '15rem', margin: '0 0 0 6rem' }}>
                 <section

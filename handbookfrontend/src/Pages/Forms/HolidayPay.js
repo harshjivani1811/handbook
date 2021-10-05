@@ -5,11 +5,12 @@ import { createHolidayPay } from '../../API/Form/holidaypay.api'
 import axios from 'axios'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import { useSelector } from 'react-redux'
+import StatePdf from "./StatePdf";
 
 const HolidayPay = props => {
   const AllStatePDFData = useSelector(
     state =>
-      state.rootReducer.stateWithLeavesReducer.stateAndLeaves[3].singleState
+      state.rootReducer.stateWithLeavesReducer.stateAndLeaves[1].singleState
   )
 
   const [formPass, setFormPass] = useState(false)
@@ -27,7 +28,6 @@ const HolidayPay = props => {
 
   const {
     isHolidayPay,
-
     isPayHolidayPay,
     holiday,
     error,
@@ -97,33 +97,35 @@ const HolidayPay = props => {
   const Test = () => {
     return (
       <>
-        <div className='my-5'>
+        <div className="my-5">
           <h2>
-            State Name :{' '}
-            <span className='text-danger'>
+            State Name :{" "}
+            <span className="text-danger">
               {AllStatePDFData[1].stateId.name}
             </span>
           </h2>
           {AllStatePDFData.map((item, i) => {
             return (
-              <div key={i} className='my-3 border px-2'>
+              <div key={i} className="my-3 border px-2">
                 <p>
-                  Id : <span className='text-danger'>{item._id}</span>
+                  Id : <span className="text-danger">{item._id}</span>
                 </p>
                 <p>
-                  Leave Title :{' '}
-                  <span className='text-danger'>{item.title}</span>
+                  Leave Title :{" "}
+                  <span className="text-danger">{item.title}</span>
                 </p>
                 <p>
-                  Description :{' '}
-                  <span className='text-danger'>{item.description}</span>
+                  Description :{" "}
+                  <span className="text-danger">{item.description}</span>
                 </p>
               </div>
-            )
+            );
           })}
         </div>
+        <div>
+        </div>
       </>
-    )
+    );
   }
 
   return (
@@ -132,172 +134,172 @@ const HolidayPay = props => {
 
       {loading ? (
         <Loader
-          type='BallTriangle'
-          color='#00BFFF'
+          type="BallTriangle"
+          color="#00BFFF"
           height={100}
           width={100}
           timeout={3000} // 3 secs
         />
       ) : (
-        ''
+        ""
       )}
 
       <>
         <form
           onSubmit={handleSubmit}
-          className='form-common payroll common-radio-sec'
-          id='HolidayPay'
+          className="form-common payroll common-radio-sec"
+          id="HolidayPay"
         >
-          <div className='back-btn'>
+          <div className="back-btn">
             <strong
-              className='btn-light'
-              style={{ cursor: 'pointer', padding: '10px' }}
-              onClick={() => props.page('from-HolidayPay')}
+              className="btn-light"
+              style={{ cursor: "pointer", padding: "10px" }}
+              onClick={() => props.page("from-HolidayPay")}
             >
               <ArrowBackIcon />
             </strong>
           </div>
           <h1>Do You offer HolidayPay ?</h1>
           {error ? (
-            <span className='alert alert-danger' role='alert'>
+            <span className="alert alert-danger" role="alert">
               {errormessage}
             </span>
           ) : (
-            ''
+            ""
           )}
-          <div className='formgroup'>
+          <div className="formgroup">
             <input
-              type='radio'
-              name='isHolidayPay'
-              className='form-input-check'
-              value='yes'
-              onClick={handleChange('isHolidayPay')}
+              type="radio"
+              name="isHolidayPay"
+              className="form-input-check"
+              value="yes"
+              onClick={handleChange("isHolidayPay")}
             />
             <label>Yes</label>
             <input
-              type='radio'
-              name='isHolidayPay'
-              className='form-input-check'
-              value='no'
-              onChange={handleChange('isHolidayPay')}
+              type="radio"
+              name="isHolidayPay"
+              className="form-input-check"
+              value="no"
+              onChange={handleChange("isHolidayPay")}
             />
             <label>No</label>
           </div>
-          {data.isHolidayPay === 'yes' ? (
+          {data.isHolidayPay === "yes" ? (
             <>
               {/* Labor Day<br /> */}
 
-              <div className='formgroup'>
+              <div className="formgroup">
                 <input
-                  type='checkbox'
-                  id='hd1'
-                  name='hd1'
+                  type="checkbox"
+                  id="hd1"
+                  name="hd1"
                   value="newYear'sDay"
-                  onChange={handleChange('holiday')}
+                  onChange={handleChange("holiday")}
                 />
                 <label>New Year's Day</label>
               </div>
 
-              <div className='formgroup'>
+              <div className="formgroup">
                 <input
-                  type='checkbox'
-                  id='hd2'
-                  name='hd2'
-                  value='memorialDay'
-                  onChange={handleChange('holiday')}
+                  type="checkbox"
+                  id="hd2"
+                  name="hd2"
+                  value="memorialDay"
+                  onChange={handleChange("holiday")}
                 />
                 <label> Memorial Day</label>
               </div>
 
-              <div className='formgroup'>
+              <div className="formgroup">
                 <input
-                  type='checkbox'
-                  id='hd3'
-                  name='hd3'
-                  value='july4'
-                  onChange={handleChange('holiday')}
+                  type="checkbox"
+                  id="hd3"
+                  name="hd3"
+                  value="july4"
+                  onChange={handleChange("holiday")}
                 />
                 <label>
-                  {' '}
+                  {" "}
                   July 4<sup>th</sup>
                 </label>
               </div>
 
-              <div className='formgroup'>
+              <div className="formgroup">
                 <input
-                  type='checkbox'
-                  id='hd4'
-                  name='hd4'
-                  value='laborDay'
-                  onChange={handleChange('holiday')}
+                  type="checkbox"
+                  id="hd4"
+                  name="hd4"
+                  value="laborDay"
+                  onChange={handleChange("holiday")}
                 />
                 <label>Labor Day</label>
               </div>
 
-              <div className='formgroup'>
+              <div className="formgroup">
                 <input
-                  type='checkbox'
-                  id='hd5'
-                  name='hd5'
-                  value='thanksgivingDay'
-                  onChange={handleChange('holiday')}
+                  type="checkbox"
+                  id="hd5"
+                  name="hd5"
+                  value="thanksgivingDay"
+                  onChange={handleChange("holiday")}
                 />
                 <label>Thanksgiving Day</label>
               </div>
 
-              <div className='formgroup'>
+              <div className="formgroup">
                 <input
-                  type='checkbox'
-                  id='hd6'
-                  name='hd6'
-                  value='chrismasDay'
-                  onChange={handleChange('holiday')}
+                  type="checkbox"
+                  id="hd6"
+                  name="hd6"
+                  value="chrismasDay"
+                  onChange={handleChange("holiday")}
                 />
                 <label>Christmas Day</label>
               </div>
 
-              <div className='formgroup'>
+              <div className="formgroup">
                 <h3>Do you pay part-time employees holiday pay?</h3>
                 <input
-                  type='radio'
-                  name='isPayHolidayPay'
-                  value='yes'
-                  className='form-input-check'
-                  onChange={handleChange('isPayHolidayPay')}
+                  type="radio"
+                  name="isPayHolidayPay"
+                  value="yes"
+                  className="form-input-check"
+                  onChange={handleChange("isPayHolidayPay")}
                 />
                 <label>Yes</label>
                 <input
-                  type='radio'
-                  name='isPayHolidayPay'
-                  value='no'
-                  className='form-input-check'
-                  onChange={handleChange('isPayHolidayPay')}
+                  type="radio"
+                  name="isPayHolidayPay"
+                  value="no"
+                  className="form-input-check"
+                  onChange={handleChange("isPayHolidayPay")}
                 />
                 <label>No</label>
               </div>
             </>
           ) : (
-            ''
+            ""
           )}
-          <button type='submit' className='btn'>
+          <button type="submit" className="btn">
             Submit
           </button>
         </form>
         {data.successMsg ? (
           <p
-            className='alert alert-success'
-            role='alert'
-            style={{ marginTop: '2rem' }}
+            className="alert alert-success"
+            role="alert"
+            style={{ marginTop: "2rem" }}
           >
             {data.successMsg}
           </p>
         ) : (
-          ''
+          ""
         )}
       </>
-      <Test />
+      {/* <StatePdf /> */}
     </div>
-  )
+  );
 }
 
 export default HolidayPay

@@ -11,16 +11,9 @@ import Box from '@material-ui/core/Box'
 import Modal from '@material-ui/core/Modal'
 import { createState } from '../../API/Form/states.api'
 import axios from 'axios'
-<<<<<<< HEAD
-import { useSelector } from 'react-redux'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-// import StatePDF from "./StatePdf";
-=======
 import { useSelector, connect } from 'react-redux'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import { addAllStateAndLeaves } from './../../Redux/Action/action'
->>>>>>> 5fe693dc2075862c2c8abac65d3a3b676ba33f8e
-
 // import Loader from 'react-loader-spinner'
 // import Button from '@material-ui/core/Button'
 
@@ -37,6 +30,7 @@ const style = {
 }
 
 const States = props => {
+
   const [loginData, setLoginData] = useState()
   const [data, setData] = useState({
     state: [],
@@ -387,16 +381,11 @@ const States = props => {
             Submit
           </button>
         </form>
-        {/* <div>
-          <StatePDF />
-        </div> */}
+      
       </>
     </div>
   );
 }
-<<<<<<< HEAD
-export default States;
-=======
 
 const mapStateToProps = state => ({
   stateAndLeavesFromRedux: state.rootReducer
@@ -408,4 +397,3 @@ const mapDispatchToProps = dispatch => {
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(States)
->>>>>>> 5fe693dc2075862c2c8abac65d3a3b676ba33f8e
