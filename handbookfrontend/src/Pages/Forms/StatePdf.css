@@ -1,0 +1,24 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.pdf-container{
+    border: 1px solid black;
+    padding: 5rem;
+    width: 794px;
+    height : 1194px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.text-left{
+  color: black;
+}
+.content-header{
+    color: #1663be;
+}
+li{
+    margin: 0px 0px 0px 11rem;
+}
+/* 297 x 210 mm
+1122.519685
+793.7007874 */
