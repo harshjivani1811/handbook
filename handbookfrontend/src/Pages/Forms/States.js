@@ -104,9 +104,6 @@ const States = props => {
       .catch(err => console.log('Error :', err))
   }
 
-  console.log('Single :', singleStatePDF)
-  console.log('Multiple :', allStateDataPDF)
-
   const handleDelete = name => e => {
     e.preventDefault()
     const stateArr = state
