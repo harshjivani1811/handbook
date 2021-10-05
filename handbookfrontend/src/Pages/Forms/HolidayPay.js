@@ -4,15 +4,8 @@ import Loader from 'react-loader-spinner'
 import { createHolidayPay } from '../../API/Form/holidaypay.api'
 import axios from 'axios'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
-import { useSelector } from 'react-redux'
-import StatePdf from "./StatePdf";
 
 const HolidayPay = props => {
-  const AllStatePDFData = useSelector(
-    state =>
-      state.rootReducer.stateWithLeavesReducer.stateAndLeaves[1].singleState
-  )
-
   const [formPass, setFormPass] = useState(false)
   const [loginData, setLoginData] = useState()
 
@@ -94,42 +87,8 @@ const HolidayPay = props => {
     setLoginData(loginToken)
   }, [])
 
-  const Test = () => {
-    return (
-      <>
-        <div className="my-5">
-          <h2>
-            State Name :{" "}
-            <span className="text-danger">
-              {AllStatePDFData[1].stateId.name}
-            </span>
-          </h2>
-          {AllStatePDFData.map((item, i) => {
-            return (
-              <div key={i} className="my-3 border px-2">
-                <p>
-                  Id : <span className="text-danger">{item._id}</span>
-                </p>
-                <p>
-                  Leave Title :{" "}
-                  <span className="text-danger">{item.title}</span>
-                </p>
-                <p>
-                  Description :{" "}
-                  <span className="text-danger">{item.description}</span>
-                </p>
-              </div>
-            );
-          })}
-        </div>
-        <div>
-        </div>
-      </>
-    );
-  }
-
   return (
-    <div>
+    <>
       {/* eslint multiline-ternary: ["error", "never"] */}
 
       {loading ? (
@@ -144,7 +103,7 @@ const HolidayPay = props => {
         ""
       )}
 
-      <>
+      <div>
         <form
           onSubmit={handleSubmit}
           className="form-common payroll common-radio-sec"
@@ -296,10 +255,9 @@ const HolidayPay = props => {
         ) : (
           ""
         )}
-      </>
-      {/* <StatePdf /> */}
-    </div>
-  );
+      </div>
+    </>
+  )
 }
 
 export default HolidayPay
