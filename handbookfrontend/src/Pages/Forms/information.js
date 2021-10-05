@@ -326,6 +326,7 @@ const Information = props => {
                 className='form-control'
                 name='zipcode'
                 maxLength={8}
+                minLength={6}
                 id='inputzipcode'
                 value={zipcode}
                 onChange={handleChange('zipcode')}
@@ -339,6 +340,8 @@ const Information = props => {
                 id='inputphonenumber'
                 value={phonenumber}
                 maxLength={10}
+                minLength={8}
+
                 onChange={handleChange('phonenumber')}
               />
               <p className='error-msg'>{dataError.phonenumber}</p>
