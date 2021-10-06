@@ -5,9 +5,9 @@
 }
 .pdf-container{
     border: 1px solid black;
-    padding: 5rem;
-    width: 794px;
-    height : 1194px;
+    /* padding: 5rem; */
+    /* width: 794px;
+    height : 1194px; */
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .text-left{

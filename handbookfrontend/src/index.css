@@ -367,7 +367,6 @@ select {
   .page-height {
     height: 1124px;
     width: 793px;
-    border: 1px solid gray;
   }
 }
 
@@ -401,7 +400,6 @@ select {
   .page-height {
     height: 1124px;
     width: 767px;
-    border: 1px solid gray;
   }
 }
 /* PDF Component CSS */
@@ -411,7 +409,7 @@ select {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 12px;
   width: 100%;
-  max-width: 811px;
+  /* max-width: 811px; */
   overflow-x: auto;
   padding: 20px;
 }
@@ -453,7 +451,6 @@ select {
 .page-height {
   height: 1124px;
   width: 793px;
-  border: 1px solid gray;
   margin: -5px;
 }
 

@@ -14,7 +14,6 @@ import axios from 'axios'
 import { useSelector, connect } from 'react-redux'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import { addAllStateAndLeaves } from './../../Redux/Action/action'
-
 // import Loader from 'react-loader-spinner'
 // import Button from '@material-ui/core/Button'
 
@@ -31,6 +30,7 @@ const style = {
 }
 
 const States = props => {
+
   const [loginData, setLoginData] = useState()
   const [data, setData] = useState({
     state: [],
@@ -103,9 +103,6 @@ const States = props => {
       })
       .catch(err => console.log('Error :', err))
   }
-
-  console.log('Single :', singleStatePDF)
-  console.log('Multiple :', allStateDataPDF)
 
   const handleDelete = name => e => {
     e.preventDefault()
@@ -235,72 +232,72 @@ const States = props => {
         ''
       )} */}
       <>
-        <form onSubmit={handleSubmit} className="form-common State mx-5">
-          <div className="back-btn">
+        <form onSubmit={handleSubmit} className='form-common State mx-5'>
+          <div className='back-btn'>
             <strong
-              className="btn-light "
-              style={{ cursor: "pointer", padding: "10px" }}
-              onClick={() => props.page("from-State")}
+              className='btn-light '
+              style={{ cursor: 'pointer', padding: '10px' }}
+              onClick={() => props.page('from-State')}
             >
               <ArrowBackIcon />
             </strong>
           </div>
           <h1>State</h1>
           {error ? (
-            <span className="alert alert-danger" role="alert">
+            <span className='alert alert-danger' role='alert'>
               {errormessage}
             </span>
           ) : (
-            ""
+            ''
           )}
-          <div className="formgroup">
+          <div className='formgroup'>
             <label>Choose State :</label>
 
             <select
-              name="state"
-              id="state1"
+              name='state'
+              id='state1'
               // value={state}
-              className="form-control"
-              onChange={handleChange("state")}
+              className='form-control'
+              onChange={handleChange('state')}
             >
               <option hidden>Select State</option>
 
-              {StateForLeaveSchema.map((data) => {
+              {StateForLeaveSchema.map(data => {
                 return (
                   <option
                     key={data._id}
                     value={data._id}
-                    className="capital-letter"
+                    className='capital-letter'
                   >
                     {data.name}
                   </option>
-                );
+                )
               })}
             </select>
           </div>
           {state.map((e, i) => {
             return (
               <div key={i}>
-                <div className="alert alert-primary selected-state">
-                  <div className="capital-letter">
-                    {StateForLeaveSchema.filter((data) => data._id === e).map(
-                      (data) => data.name
+                <div className='alert alert-primary selected-state'>
+                  <div className='capital-letter'>
+                    {StateForLeaveSchema.filter(data => data._id === e).map(
+                      data => data.name
                     )}
                   </div>
-                  <div className="selected-state-control">
+                  <div className='selected-state-control'>
                     <span
                       onClick={() => {
                         LeaveState(
                           StateForLeaveSchema.filter(
-                            (data) => data._id === e
-                          ).map((data) => data._id)
-                        );
+                            data => data._id === e
+                          ).map(data => data._id)
+                        )
                         setPolicyToggle({
                           name: StateForLeaveSchema.filter(
-                            (data) => data._id === e
-                          ).map((data) => data.name),
-                          show: true,
-                        });
+                            data => data._id === e
+                          ).map(data => data.name),
+                          show: true
+                        })
                       }}
                     > Click To View
                       {/* <VisibilityIcon /> */}
@@ -313,17 +310,17 @@ const States = props => {
 
                 <div>
                   <Modal
-                    className="capital-letter modal-state"
+                    className='capital-letter modal-state'
                     open={policyToggle.show}
-                    onClose={() => setPolicyToggle({ name: "", show: false })}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
+                    onClose={() => setPolicyToggle({ name: '', show: false })}
+                    aria-labelledby='modal-modal-title'
+                    aria-describedby='modal-modal-description'
                   >
                     <Box sx={style}>
                       <Typography
-                        id="modal-modal-title"
-                        variant="h6"
-                        component="h2"
+                        id='modal-modal-title'
+                        variant='h6'
+                        component='h2'
                       >
                         {policyToggle.name} Leave Information
                       </Typography>
@@ -338,10 +335,10 @@ const States = props => {
                           // }
                           return (
                             <Typography
-                              id="modal-modal-description"
+                              id='modal-modal-description'
                               sx={{ mt: 2 }}
                               key={data._id}
-                              variant="subtitle1"
+                              variant='subtitle1'
                             >
                               <span>
                                 <Accordion
@@ -350,43 +347,41 @@ const States = props => {
                                   onChange={handleAccordionChange(i)}
                                 >
                                   <AccordionSummary
-                                    aria-controls="panel1d-content"
-                                    id="panel1d-header"
+                                    aria-controls='panel1d-content'
+                                    id='panel1d-header'
                                   >
-                                    <span style={{ fontWeight: "normal" }}>
+                                    <span style={{ fontWeight: 'normal' }}>
                                       {data.title}
                                     </span>
                                   </AccordionSummary>
 
                                   {/* description mapping below */}
-                                  <AccordionDetails className="internal-details-stateleave">
-                                    <span style={{ fontWeight: "normal" }}>
+                                  <AccordionDetails className='internal-details-stateleave'>
+                                    <span style={{ fontWeight: 'normal' }}>
                                       {data.description}
                                     </span>
                                   </AccordionDetails>
                                 </Accordion>
                               </span>
                             </Typography>
-                          );
+                          )
                         })}
                       </div>
                     </Box>
                   </Modal>
                 </div>
               </div>
-            );
+            )
           })}
           <br />
-          <button type="submit" className="btn">
+          <button type='submit' className='btn'>
             Submit
           </button>
         </form>
-        {/* <div>
-          <StatePDF />
-        </div> */}
+      
       </>
     </div>
-  );
+  )
 }
 
   const mapStateToProps = state => ({
