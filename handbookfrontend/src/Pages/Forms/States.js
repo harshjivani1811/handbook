@@ -83,6 +83,7 @@ const States = props => {
   }, [singleStatePDF]) // eslint-disable-line
 
   const handleChange = name => e => {
+debugger
     if (!state.includes(e.target.value)) {
       setData({
         ...data,
@@ -192,6 +193,7 @@ const States = props => {
   const [LeaveSchema, setLeaveSchema] = useState([])
 
   const LeaveState = id => {
+    debugger
     axios({
       url: `${process.env.REACT_APP_API_URL}/api/leave/getleaves`,
       method: 'POST',
@@ -287,6 +289,7 @@ const States = props => {
                   <div className='selected-state-control'>
                     <span
                       onClick={() => {
+                        debugger
                         LeaveState(
                           StateForLeaveSchema.filter(
                             data => data._id === e
